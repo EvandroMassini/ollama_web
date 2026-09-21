@@ -1,0 +1,15 @@
+.attach-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+}
+
+.attach-label {
+  font-size: .76rem;
+}
+
+@media (max-width: 520px) {
+  .attach-label { display: none; }
+}

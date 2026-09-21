@@ -1,0 +1,20 @@
+{
+  "name": "ollama-web-php/ollama-web-php",
+  "description": "Front-end PHP para Ollama remoto com ferramentas, PostgreSQL, anexos e geração de arquivos.",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-fileinfo": "*"
+  },
+  "suggest": {
+    "ext-pdo_pgsql": "Necessária para as ferramentas PostgreSQL.",
+    "ext-zip": "Necessária para gerar ZIP, DOCX e XLSX."
+  },
+  "scripts": {
+    "lint": "@php -r \"foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.', FilesystemIterator::SKIP_DOTS)) as $f){if($f->getExtension()==='php'){passthru(PHP_BINARY.' -l '.escapeshellarg($f->getPathname()),$c);if($c)exit($c);}}\""
+  }
+}

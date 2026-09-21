@@ -1,0 +1,15 @@
+.response-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #0d121c;
+  color: var(--muted);
+  font-size: .72rem;
+  font-variant-numeric: tabular-nums;
+}
+.request-timer { color: #b8b0ff; font-variant-numeric: tabular-nums; }
+.request-timer::before { content: '◷ '; }
