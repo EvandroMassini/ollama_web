@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 final class Ollama
 {
+    /** Modelo informado pelo Ollama na resposta mais recente de /api/chat. */
+    private ?string $lastResponseModel = null;
+
     public function __construct(
         private readonly string $baseUrl,
         private readonly string $model,
@@ -31,10 +34,20 @@ final class Ollama
         ];
         if ($tools !== []) $payload['tools'] = $tools;
         $data = $this->request('/api/chat', $payload);
+        // Não presumimos que o servidor usou o modelo solicitado: registramos
+        // exatamente o nome devolvido pela própria API do Ollama.
+        $reportedModel = trim((string)($data['model'] ?? ''));
+        $this->lastResponseModel = $reportedModel !== '' ? $reportedModel : null;
         $message = $data['message'] ?? null;
         if (!is_array($message)) throw new RuntimeException('O Ollama respondeu sem uma mensagem válida.');
         return $message;
     }
+
+    /** Modelo enviado no payload de todas as chamadas de chat. */
+    public function requestedModel(): string { return $this->model; }
+
+    /** Modelo confirmado pela resposta mais recente do servidor. */
+    public function responseModel(): ?string { return $this->lastResponseModel; }
 
     /** @return array<string, mixed> */
     public function status(): array

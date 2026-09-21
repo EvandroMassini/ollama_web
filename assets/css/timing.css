@@ -13,3 +13,18 @@
 }
 .request-timer { color: #b8b0ff; font-variant-numeric: tabular-nums; }
 .request-timer::before { content: '◷ '; }
+
+.model-confirmation {
+  display: block;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #0d121c;
+  color: var(--muted);
+  font-size: .72rem;
+}
+.model-confirmation.confirmed { color: #63d6a3; border-color: rgba(99,214,163,.35); }
+.model-confirmation.mismatch { color: #ffc66d; border-color: rgba(255,198,109,.4); }
+.model-confirmation.unavailable { color: var(--muted); }

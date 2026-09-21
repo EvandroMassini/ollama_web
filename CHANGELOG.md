@@ -2,6 +2,7 @@
 
 ## 1.2.0 — 2026
 
+- Cada resposta agora mostra o modelo solicitado e o modelo confirmado pelo próprio Ollama.
 - O texto provisório "Conectando…" deixou de ser tratado como nome de modelo.
 - O campo de modelo permanece vazio quando o Ollama está indisponível.
 - Após testar uma nova URL, o primeiro modelo instalado é selecionado e salvo automaticamente quando necessário.

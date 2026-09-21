@@ -9,6 +9,7 @@ Este projeto foi criado com o auxílio do **OpenAI Codex**.
 - Chat responsivo para computador e celular.
 - URL do Ollama configurável e persistente pelo painel.
 - Descoberta e seleção dos modelos instalados.
+- Confirmação, em cada nova resposta, do modelo informado pela API do Ollama.
 - Instalação remota de modelos por `/api/pull`.
 - Pré-carregamento e liberação de modelos da CPU/GPU.
 - Temperatura, contexto e `keep_alive` configuráveis.

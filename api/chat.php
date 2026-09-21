@@ -30,7 +30,17 @@ try {
     $attachments=$isMultipart?(new Upload((array)$config['uploads']))->parse($_FILES['files']??[]):[];
     $answer=$chat->responder($message,$attachments);
     $durationMs=(int)round((microtime(true)-$requestStarted)*1000);
-    respond(['ok' => true, 'answer' => $answer, 'trace' => $chat->trace(), 'artifacts'=>$artefatos->created(), 'duration_ms'=>$durationMs]);
+    respond([
+        'ok' => true,
+        'answer' => $answer,
+        'trace' => $chat->trace(),
+        'artifacts'=>$artefatos->created(),
+        'duration_ms'=>$durationMs,
+        // requested_model mostra o que o PHP enviou; response_model é o valor
+        // retornado pelo próprio Ollama na última inferência desta resposta.
+        'requested_model'=>$ollama->requestedModel(),
+        'response_model'=>$ollama->responseModel(),
+    ]);
 } catch (InvalidArgumentException|JsonException $error) {
     respond(['ok' => false, 'error' => $error->getMessage()], 422);
 } catch (Throwable $error) {
